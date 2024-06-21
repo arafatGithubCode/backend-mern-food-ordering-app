@@ -1,8 +1,15 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import myUserRoute from "./routes/MyUserRoute";
+import { v2 as cloudinary } from "cloudinary";
 
 const app = express();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET_KEY,
+});
 
 app.use(express.json());
 app.use(cors());
