@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import multer = require("multer");
 import MyRestaurantController from "../controllers/MyRestaurantController";
+import { jwtCheck, jwtParse } from "../middleware/auth";
 
 const storage = multer.memoryStorage();
 const upload = multer({
@@ -12,6 +13,7 @@ const upload = multer({
 });
 
 // /api/my/restaurant
+router.get("/", jwtCheck, jwtParse, MyRestaurantController.getMyRestaurant);
 router.post(
   "/",
   upload.single("imageFile"),
