@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import myUserRoute from "./routes/MyUserRoute";
 import myRestaurantRoute from "./routes/MyRestaurantRoute";
+import RestaurantRoute from "./routes/RestaurantRoute";
 import { v2 as cloudinary } from "cloudinary";
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(cors());
 
 app.use("/api/my/user", myUserRoute);
 app.use("/api/my/restaurant", myRestaurantRoute);
+app.use("/api/restaurant", RestaurantRoute);
 
 app.get("/health", async (req: Request, res: Response) => {
   res.send({
