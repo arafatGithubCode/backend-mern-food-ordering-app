@@ -5,6 +5,15 @@ const router = express.Router();
 
 // /api/restaurant
 router.get(
+  "/:restaurantId",
+  param("restaurantId")
+    .trim()
+    .isString()
+    .notEmpty()
+    .withMessage("Restaurant id must be a valid string"),
+  RestaurantController.getRestaurantById
+);
+router.get(
   "/search/:city",
   param("city")
     .trim()
