@@ -14,6 +14,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET_KEY,
 });
 
+app.use("/api/order/checkout/webhook", express.raw({ type: "*/*" }));
+
 app.use(express.json());
 app.use(cors());
 
