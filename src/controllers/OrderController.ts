@@ -46,6 +46,8 @@ const createCheckoutSession = async (req: Request, res: Response) => {
     if (!session.url) {
       return res.status(500).json({ message: "Error creating stripe session" });
     }
+
+    res.json({ url: session.url });
   } catch (error: any) {
     console.error("Error", error);
     res.status(500).json({ message: error.raw.message });
