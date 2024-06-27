@@ -23,6 +23,7 @@ type CheckoutSessionRequest = {
 };
 
 const getMyOrders = async (req: Request, res: Response) => {
+  console.log("uId", req.userId);
   try {
     const orders = await Order.find({ user: req.userId })
       .populate("restaurant")
