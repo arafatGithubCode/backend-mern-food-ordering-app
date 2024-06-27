@@ -112,7 +112,6 @@ const updateOrderStatus = async (req: Request, res: Response) => {
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
-    console.log("Order", order);
 
     const restaurant = await Order.findById(order.restaurant);
 
